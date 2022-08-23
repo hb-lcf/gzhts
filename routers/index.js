@@ -56,7 +56,7 @@ router.get("/template", (req, res) => {
           accessToken,
         data: {
           touser: config.users.openid,
-          template_id: config.template_id,
+          template_id: config.wx.template_id,
           data: {
             date: {
               value: "XX",

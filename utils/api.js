@@ -10,13 +10,13 @@ module.exports = {
         url: "http://api.tianapi.com/tianqi/index",
         params: {
           key: config.tianXin.key,
-          city: "福州市", //支持国内城市行政区划代码（建议）和城市中文名称查询（市区县）
+          city: config.users.city,
         },
       })
         .then((res) => {
           if (res.data.code == 200) {
             // console.log(res.data.newslist[1]);
-            resolve(res.data.newslist[1]);
+            resolve(res.data.newslist[1]); //今天的天气，0是昨天 2是明天
           } else {
             reject(res.data);
           }
