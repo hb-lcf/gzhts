@@ -8,8 +8,9 @@ module.exports = {
   // 要推送的用户openid和信息
   users: {
     openid: "oiQLt6okPWNC_0aZY4wqUxjP4xPc",
-    month: 03, //月
-    day: 30, //日
+    // 生日
+    month: "03", //月
+    day: "30", //日
   },
   //模板id
   template_id: "vKv0DLlc69o5Y1INWz1T0kp3t4FtJFac-D4K74gI2q8",
