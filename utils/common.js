@@ -75,6 +75,8 @@ module.exports = {
     }
     return "#" + hex; //返回‘#'开头16进制颜色
   },
+
+  //计算距离生日的天数
   getDaysToBirthday: (month = 01, day = 01) => {
     const nowTime = new Date();
     const thisYear = nowTime.getFullYear();

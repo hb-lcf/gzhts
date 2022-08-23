@@ -23,7 +23,6 @@ const getAccessToken = () => {
         params: params, //传参
       })
         .then((res) => {
-          console.log(12313, res.data);
           if (!res.data.errcode) {
             accessTokenJson.access_token = res.data.access_token; //更新
             accessTokenJson.expires_time =
@@ -33,13 +32,13 @@ const getAccessToken = () => {
 
             //重新保存到access_token.json
             fs.writeFileSync(
-              "./../access_token.json",
+              "./datas/access_token.json",
               JSON.stringify(accessTokenJson)
             );
             resolve(res.data.access_token);
-          }
-          eles;
-          {
+          } else {
+            console("错误", res.data);
+            resolve(res.data);
           }
         })
         .catch((e) => {

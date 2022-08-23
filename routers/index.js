@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-
-const getAccessToken = require("../utils/getAccessToken"); //引入config.js文件
+const config = require("../utils/config");
+const getAccessToken = require("../utils/getAccessToken");
 const apis = require("../utils/api");
 const common = require("../utils/common");
 
@@ -11,7 +11,6 @@ router.get("/", (req, res) => {
   (async () => {
     try {
       const accessToken = await getAccessToken();
-
       const result = await axios({
         method: "GET",
         url: "https://api.weixin.qq.com/cgi-bin/user/get",
@@ -47,14 +46,15 @@ router.get("/template", (req, res) => {
     try {
       const accessToken = await getAccessToken();
       const weather = await apis.getWeather();
+      const lzmy = await apis.getLzmy();
       const result = await axios({
         method: "POST",
         url:
           "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" +
           accessToken,
         data: {
-          touser: "oiQLt6mEvZ8Y39OJjQX32aq4WAL4",
-          template_id: "vKv0DLlc69o5Y1INWz1T0kp3t4FtJFac-D4K74gI2q8",
+          touser: config.users.openid,
+          template_id: config.template_id,
           data: {
             date: {
               value: "XX",
@@ -85,12 +85,14 @@ router.get("/template", (req, res) => {
               color: common.randomHexColor(),
             },
             mineBirthDays: {
-              // value: common.getDaysToBirthday(08, 30),
-              value: "不知道！！！",
+              value: common.getDaysToBirthday(
+                config.users.month,
+                config.users.day
+              ),
               color: common.randomHexColor(),
             },
             lizhi: {
-              value: "无",
+              value: lzmy.saying + " ——— " + lzmy.source,
               color: common.randomHexColor(),
             },
           },

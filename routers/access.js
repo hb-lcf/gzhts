@@ -11,7 +11,6 @@ const sha1 = (str) => {
 //接入微信验证
 router.get("/", (req, res) => {
   console.log(req.query);
-
   const token = config.wx.token;
   const { signature, timestamp, nonce, echostr } = req.query;
   //）将三个参数进行字典序排序,三个参数字符串拼接成一个字符串
@@ -27,19 +26,16 @@ router.get("/", (req, res) => {
 //接收微信服务器转发的消息（用户发送的消息）
 router.post("/", (req, res) => {
   console.log("接收到用户消息的请求");
-
   let buff = "";
   req.on("data", (data) => {
     buff = buff + data;
   });
   req.on("end", () => {
     //监听数据传输结束
-    console.log("接收到用户发送的消息");
     (async () => {
       try {
         const result = await common.toJson(buff);
-        console.log("123", result);
-
+        console.log("接收到用户发送的消息");
         //判断消息类型
         switch (result.xml.MsgType) {
           case "text":
