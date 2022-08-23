@@ -22,16 +22,17 @@ module.exports = {
   },
   //回复用户消息
   resText: (res, obj) => {
+    console.log("消息obj", obj);
     const resMsg = {
       xml: {
         ToUserName: obj.FromUserName,
         FromUserName: obj.ToUserName,
         CreateTime: new Date().getTime(),
         MsgType: "text",
-        Content: "已经收到您的消息，您发送的消息时：" + obj.Content,
+        Content: obj.Content, //回复的消息
       },
     };
-    const resMsgXml = toXml(resMsg);
+    const resMsgXml = module.exports.toXml(resMsg);
     console.log("回复消息：", resMsgXml);
     res.send(resMsgXml);
   },
@@ -48,7 +49,7 @@ module.exports = {
           Content: "收到的是第一个点击事件",
         },
       };
-      const resMsgXml = toXml(resMsg);
+      const resMsgXml = module.exports.toXml(resMsg);
       res.send(resMsgXml);
     } else if (obj.EventKey === "V1002") {
       resMsg = {
@@ -60,7 +61,7 @@ module.exports = {
           Content: "收到的是第二个点击事件",
         },
       };
-      const resMsgXml = toXml(resMsg);
+      const resMsgXml = module.exports.toXml(resMsg);
       res.send(resMsgXml);
     }
   },

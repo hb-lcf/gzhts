@@ -39,10 +39,10 @@ router.post("/", (req, res) => {
         //判断消息类型
         switch (result.xml.MsgType) {
           case "text":
-            resText(res, result.xml);
+            common.resText(res, result.xml);
             break;
           case "event":
-            resEvent(res, result.xml);
+            common.resEvent(res, result.xml);
             break;
         }
       } catch (e) {
