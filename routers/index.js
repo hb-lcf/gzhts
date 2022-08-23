@@ -47,7 +47,7 @@ router.get("/template", (req, res) => {
       const accessToken = await getAccessToken();
       const weather = await apis.getWeather();
       const lzmy = await apis.getLzmy();
-      console.log(weather);
+      // console.log(weather);
 
       const result = await axios({
         method: "POST",
