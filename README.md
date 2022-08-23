@@ -1,6 +1,7 @@
 
 # 微信公众号推送(Node.js版)
  这个原项目是用py写的。[原项目](https://github.com/erwanjun/weixin_tuisong)
+ 我自己写的比较简单。
 >## 效果
 <img src="./img/微信图片_20220824012820.png" width="50%;"  slt="效果"  />
 
