@@ -2,7 +2,7 @@
 # 微信公众号推送(Node.js版)
  这个原项目是用py写的。[原项目](https://github.com/erwanjun/weixin_tuisong)
 >## 效果
-<img src="./img/微信图片_20220824012820.png" style="zoom:10%;"  slt="效果"  />
+<img src="./img/微信图片_20220824012820.png" style="zoom:0.2;"  slt="效果"  />
 
 >## 安装运行
 打开cmd，执行以下命令
